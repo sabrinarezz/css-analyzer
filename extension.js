@@ -6,7 +6,7 @@ function activate(context) {
   const disposable = vscode.commands.registerCommand('cssCleaner.scan', async function () {
 
     const results = await analyzeCSS();
-    console.log("RESULTS:::::::::: ", results);
+    // console.log("RESULTS:::::::::: ", results);
 
     const output = vscode.window.createOutputChannel("CSS Cleaner");
     output.clear();

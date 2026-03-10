@@ -4,13 +4,13 @@ const path = require('path');
 
 async function scanCSSFiles() {
   const workspaceFolders = vscode.workspace.workspaceFolders;
+  // console.log("scanCSSFiles workspaceFolders::: ", workspaceFolders);
 
   if (!workspaceFolders) {
     return [];
   }
 
   const root = workspaceFolders[0].uri.fsPath;
-
   const files = await glob([
     '**/*.css',
     '**/*.scss'
@@ -29,13 +29,13 @@ async function scanCSSFiles() {
 
 async function scanMarkupFiles() {
   const workspaceFolders = vscode.workspace.workspaceFolders;
+  // console.log("scanMarkupFiles workspaceFolders::: ", workspaceFolders);
 
   if (!workspaceFolders) {
     return [];
   }
 
   const root = workspaceFolders[0].uri.fsPath;
-
   const files = await glob([
     '**/*.html',
     '**/*.jsx',

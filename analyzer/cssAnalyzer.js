@@ -4,7 +4,6 @@ const safeParser = require('postcss-safe-parser');
 const { scanCSSFiles } = require('../utils/fileScanner');
 
 module.exports = async function analyzeCSS() {
-
   const files = await scanCSSFiles();
   const results = [];
   const selectorMap = {};
