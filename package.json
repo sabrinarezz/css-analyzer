@@ -1,0 +1,31 @@
+{
+  "name": "css-cleaner",
+  "displayName": "CSS Cleaner",
+  "description": "Detect duplicate CSS",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./extension.js",
+
+  "activationEvents": [
+    "onCommand:cssCleaner.scan"
+  ],
+
+  "contributes": {
+    "commands": [
+      {
+        "command": "cssCleaner.scan",
+        "title": "Scan CSS for Duplicates"
+      }
+    ]
+  },
+
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "css-tree": "^3.2.1",
+    "fast-glob": "^3.3.3",
+    "postcss": "^8.5.8",
+    "postcss-safe-parser": "^7.0.1"
+  }
+}
