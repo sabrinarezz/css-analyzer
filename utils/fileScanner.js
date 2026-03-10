@@ -1,59 +1,28 @@
 const vscode = require('vscode');
 const glob = require('fast-glob');
-const path = require('path');
 
 async function scanCSSFiles() {
-  const workspaceFolders = vscode.workspace.workspaceFolders;
-  // console.log("scanCSSFiles workspaceFolders::: ", workspaceFolders);
-
-  if (!workspaceFolders) {
-    return [];
-  }
-
-  const root = workspaceFolders[0].uri.fsPath;
-  const files = await glob([
-    '**/*.css',
-    '**/*.scss'
-  ], {
+  const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+// console.log("scanCSSFiles root::: ", root);
+  return glob(['**/*.css', '**/*.scss'], {
     cwd: root,
-    ignore: [
-      'node_modules/**',
-      'dist/**',
-      'build/**'
-    ],
+    ignore: ['node_modules/**', 'dist/**', 'build/**'],
     absolute: true
   });
-
-  return files;
 }
 
-async function scanMarkupFiles() {
-  const workspaceFolders = vscode.workspace.workspaceFolders;
-  // console.log("scanMarkupFiles workspaceFolders::: ", workspaceFolders);
+async function scanHTMLFiles() {
+  const root = vscode.workspace.workspaceFolders[0].uri.fsPath;
+// console.log("scanHTMLFiles root::: ", root);
 
-  if (!workspaceFolders) {
-    return [];
-  }
-
-  const root = workspaceFolders[0].uri.fsPath;
-  const files = await glob([
-    '**/*.html',
-    '**/*.jsx',
-    '**/*.tsx'
-  ], {
+  return glob(['**/*.html'], {
     cwd: root,
-    ignore: [
-      'node_modules/**',
-      'dist/**',
-      'build/**'
-    ],
+    ignore: ['node_modules/**', 'dist/**', 'build/**'],
     absolute: true
   });
-
-  return files;
 }
 
 module.exports = {
   scanCSSFiles,
-  scanMarkupFiles
+  scanHTMLFiles
 };
